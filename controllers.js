@@ -1,42 +1,57 @@
 	var myControllers = angular.module("myControllers", []);
 
-myControllers.controller("index", function($scope, $http){
+myControllers.controller("index", function($scope, $http, DataService){
 	if ($scope.name===undefined || $scope.name ===""){
 		$scope.firstName = "unknown";
-		console.log("name empty");
-	} else console.log("name not empty?");
+	}
 	$scope.under50 = false;
 	$scope.over49 = false;
-	$http({
-		method: 'GET',
-		url: '/cricket.json'
-	}).then(function(response){
-	$scope.cricket = response.data;
-	});
-
-		$scope.generatePicName = function(name){
+	
+	$scope.generatePicName = function(name){
+		if (name){
 		return name.replace(" ","_");
+		}
 	};
 
-	$scope.$watch('chosenSport', function(value) {
-		$http({
-			method: 'GET',
-			url: '/' + value + '.json'
-		}).then(function(response){
-			$scope.chosenSportObj = response.data;
-		});
-	});
+	$scope.newChosenSport = function(newSport){
+		DataService.DataService();
+
+	};
+
+//	$scope.$watch('chosenSport', function(value) {
+//		$http({
+//			method: 'GET',
+//			url: '/' + value + '.json'
+//		}).then(function(response){
+//			$scope.chosenSportObj = response.data;
+//		});
+//	});
 
 	$scope.keys = function (obj) {
 		return Object.keys(obj);
 	};
 
-	$scope.value = function (obj, index) {
-		var key = Object.keys(obj)[index];
-		console.log(key);
-		console.log(obj.key);
-		return obj.key;
-	};
-
-
 });
+
+myControllers.factory("DataService", function($http, $q) {
+	function DataService() {
+		var self = this;
+		self.info = null;
+
+		self.getInfo= function() {
+			var deferred = $q.defer();
+			$http.get('/soccer.json')
+			.then(function(response){
+				self.info = response.data;
+				deferred.resolve("response received");
+			},
+				function(result){
+					deferred.reject("fail");
+				});
+		
+		return deferred.promise;
+		};
+	}
+	return new DataService();
+});
+

@@ -20,8 +20,8 @@
 			<option value="Wickets">Wickets</option>
 			<input type="radio" Name="direction" ng-model="direction">Asc</input>
 			<input type="radio" value="reverse" Name="direction" ng-model="direction">Desc</input>
-			<input type="radio" value="cricket" Name="sport" ng-model="chosenSport">Cricket</input>
-			<input type="radio" value="soccer" Name="sport" ng-model="chosenSport">Soccer</input>
+			<input type="radio" value="cricket" Name="sport" ng-model="chosenSport" ng-change="newChosenSport(chosenSport)">Cricket</input>
+			<input type="radio" value="soccer" Name="sport" ng-model="chosenSport" ng-change="newChosenSport(chosenSport)">Soccer</input>
 		</div>
 		<div ng-repeat="player in chosenSportObj | filter:search | orderBy:Name:direction" style="outline:black solid">
 			<p>{{player.Name}} || {{keys(player)[1]}}: {{player[keys(player)[1]]}} || {{keys(player)[2]}}: {{player[keys(player)[2]]}}</p>

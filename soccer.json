@@ -1,56 +1,56 @@
 [
   {
-	  "name":"Tim Cahill",
-	  "picname":"Tim_Cahill",
-	  "Goals":25
+	  "Name":"Tim Cahill",
+	  "Goals":25,
+	  "Passes":15
   },
 {
-	  "name":"Mile Jedinak",
-	  "picname":"Mile_Jedinak",
-	  "Goals":24
+	  "Name":"Mile Jedinak",
+	  "Goals":24,
+	  "Passes":15
   },
   {
-	  "name":"Matthew Leckie",
-	  "picname":"Matthew_Leckie",
-	  "Goals":23
+	  "Name":"Matthew Leckie",
+	  "Goals":23,
+	  "Passes":15
   }, 
   {
-	  "name":"Aaron Moyy",
-	  "picname":"Aaron_Moyy",
-	  "Goals":22
+	  "Name":"Aaron Moyy",
+	  "Goals":22,
+	  "Passes":15
   }, 
   {
-	  "name":"Robbie Kruse",
-	  "picname":"Robbie_Kruse",
-	  "Goals":21
+	  "Name":"Robbie Kruse",
+	  "Goals":21,
+	  "Passes":15
   }, 
   {
-	  "name":"Mark Milligan",
-	  "picname":"Mark_Milligan",
-	  "Goals":20
+	  "Name":"Mark Milligan",
+	  "Goals":20,
+	  "Passes":15
   }, 
   {
-	  "name":"Tomi Juric",
-	  "picname":"Tomi_Juric",
-	  "Goals":35
+	  "Name":"Tomi Juric",
+	  "Goals":35,
+	  "Passes":15
   }, 
   {
-	  "name":"Matthew Ryan",
-	  "picname":"Matthew_Ryan",
-	  "Goals":18
+	  "Name":"Matthew Ryan",
+	  "Goals":18,
+	  "Passes":15
   },
-  { 	"name":"James Troisi",
-	  "picname":"James_Troisi",
-	  "Goals":17
+  { 	"Name":"James Troisi",
+	  "Goals":17,
+	  "Passes":15
   }, 
   {
-	  "name":"Tom Rogic",
-	  "picname":"Tom_Rogic",
-	  "Goals":16
+	  "Name":"Tom Rogic",
+	  "Goals":16,
+	  "Passes":15
   }, 
   {
-	  "name":"Massimo Luongo",
-	  "picname":"Massimo_Luongo",
-	  "Goals":2
+	  "Name":"Massimo Luongo",
+	  "Goals":2,
+	  "Passes":15
   } 
 ]
