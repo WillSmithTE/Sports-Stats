@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en" ng-app="myControllers">
+	<head>
+		<title>BIG TITLE</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.js"></script>
+		<script src="controllers.js"></script>
+	</head>
+	<body ng-controller="index">
+		<input type="text" required ng-model="firstName" placeholder="First Name"/>
+		<input type="checkbox" ng-model="under50">Under 50</input>
+		<input type="checkbox" ng-model="over49">Over 49</input>
+		<div>Name? {{firstName}}</div>
+		<div>Under 50? {{under50}}</div>
+		<div>Over 49? {{over49}}</div>
+		<br/><br/><br/>
+		<div>
+			<input type="text" ng-model="search" placeholder="Search Players"/>
+			<option value="Name">Name</option>
+			<option value="Runs">Runs</option>
+			<option value="Wickets">Wickets</option>
+			<input type="radio" Name="direction" ng-model="direction">Asc</input>
+			<input type="radio" value="reverse" Name="direction" ng-model="direction">Desc</input>
+			<input type="radio" value="cricket" Name="sport" ng-model="chosenSport">Cricket</input>
+			<input type="radio" value="soccer" Name="sport" ng-model="chosenSport">Soccer</input>
+		</div>
+		<div ng-repeat="player in chosenSportObj | filter:search | orderBy:Name:direction" style="outline:black solid">
+			<p>{{player.Name}} || {{keys(player)[1]}}: {{player[keys(player)[1]]}} || {{keys(player)[2]}}: {{player[keys(player)[2]]}}</p>
+			<img src="images/{{generatePicName(player.Name)}}.jpg" alt="{{player.name}}">
+		</div>
+	</body>
+</html>
+
+
+
