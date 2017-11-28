@@ -1,4 +1,4 @@
-	var myControllers = angular.module("myControllers", []);
+	var myControllers = angular.module("myControllers", ["services"]);
 
 myControllers.controller("index", function($scope, $http, DataService){
 	if ($scope.name===undefined || $scope.name ===""){
@@ -14,18 +14,8 @@ myControllers.controller("index", function($scope, $http, DataService){
 	};
 
 	$scope.newChosenSport = function(newSport){
-		DataService.DataService();
-
+		DataService.DataService(newSport);	
 	};
-
-//	$scope.$watch('chosenSport', function(value) {
-//		$http({
-//			method: 'GET',
-//			url: '/' + value + '.json'
-//		}).then(function(response){
-//			$scope.chosenSportObj = response.data;
-//		});
-//	});
 
 	$scope.keys = function (obj) {
 		return Object.keys(obj);
@@ -33,25 +23,20 @@ myControllers.controller("index", function($scope, $http, DataService){
 
 });
 
-myControllers.factory("DataService", function($http, $q) {
-	function DataService() {
-		var self = this;
-		self.info = null;
-
-		self.getInfo= function() {
-			var deferred = $q.defer();
-			$http.get('/soccer.json')
-			.then(function(response){
-				self.info = response.data;
-				deferred.resolve("response received");
-			},
-				function(result){
-					deferred.reject("fail");
-				});
-		
+angular.module("services", [])
+	.factory("DataService", function($http, $q) {
+	function DataService(newSport) {
+		var deferred = $q.defer();
+		$http.get('/'+newSport+'.json')
+		.then(function (response) {
+			$scope.chosenSportObj = response.data;
+			deferred.resolve("response received");
+		},
+			function(result){
+				deferred.reject("fail");
+			}
+		)
 		return deferred.promise;
-		};
-	}
-	return new DataService();
-});
-
+	};
+		return new DataService;
+	});
