@@ -1,6 +1,6 @@
-	var myControllers = angular.module("myControllers", ["services"]);
+var myControllers = angular.module("myControllers", ["services"]);
 
-myControllers.controller("index", function($scope, $http, DataService){
+myControllers.controller("index", ["$scope","$http","data", function($scope, $http, data){
 	if ($scope.name===undefined || $scope.name ===""){
 		$scope.firstName = "unknown";
 	}
@@ -13,30 +13,15 @@ myControllers.controller("index", function($scope, $http, DataService){
 		}
 	};
 
-	$scope.newChosenSport = function(newSport){
-		DataService.DataService(newSport);	
+	$scope.newChosenSport = function(newSport){	
+		$scope.chosenSportObj = data;
 	};
+
 
 	$scope.keys = function (obj) {
 		return Object.keys(obj);
 	};
 
-});
+}]);
 
-angular.module("services", [])
-	.factory("DataService", function($http, $q) {
-	function DataService(newSport) {
-		var deferred = $q.defer();
-		$http.get('/'+newSport+'.json')
-		.then(function (response) {
-			$scope.chosenSportObj = response.data;
-			deferred.resolve("response received");
-		},
-			function(result){
-				deferred.reject("fail");
-			}
-		)
-		return deferred.promise;
-	};
-		return new DataService;
-	});
+
